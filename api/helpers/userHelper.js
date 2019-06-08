@@ -4,6 +4,7 @@ const uuid = require('uuid/v4');
 module.exports = {
     getUsers,
     getUserById,
+    getUserBy,
     addUser
 }
 
@@ -18,6 +19,10 @@ function getUserById(id) {
     return db('users as u')
         .where('u.id', id)
         .first()
+}
+
+function getUserBy(filter) {
+    return db('users').where(filter);
 }
 
 // add a user to the db, id is randomly created with uuid
